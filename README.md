@@ -1,7 +1,7 @@
 ## Push Kit sample code for Android
 [![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://developer.huawei.com/consumer/en/hms)
-![Language](https://img.shields.io/badge/language-java-green.svg)
+[![Open Source Love](https://img.shields.io/badge/language-java-green.svg)](https://baidu.com)
 
 ## Table of Contents
 
