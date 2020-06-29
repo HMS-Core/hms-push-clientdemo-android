@@ -21,7 +21,7 @@ In this Demo, you will use the Demo Project that has been created for you to cal
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
 For more information, see
-https://developer.huawei.com/consumer/en/hms/huawei-pushkit
+https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction
 
 ## Getting Started
 1. Register as a developer.
