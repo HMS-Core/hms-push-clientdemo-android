@@ -25,7 +25,7 @@ https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introdu
 
 ## Getting Started
 1. Register as a developer.
-Register a [HUAWEI account](https://developer.huawei.com/consumer/en/).
+Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104).
 2. Create an app.
 Create an app and enable APIs.
 3. Build the demo.
