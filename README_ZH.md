@@ -3,6 +3,8 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://developer.huawei.com/consumer/en/hms)
 [![Open Source Love](https://img.shields.io/badge/language-java-green.svg)](https://www.java.com/en/)
 
+[English](https://github.com/HMS-Core/hms-push-clientdemo-android/blob/master/README.md) | 中文
+
 ## 目录
 
  * [简介](#简介)
