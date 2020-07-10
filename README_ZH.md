@@ -1,49 +1,45 @@
-# Push Kit sample code for Android
+# 华为推送服务安卓示例代码
 [![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://developer.huawei.com/consumer/en/hms)
 [![Open Source Love](https://img.shields.io/badge/language-java-green.svg)](https://www.java.com/en/)
 
-## Table of Contents
+## 目录
 
- * [Introduction](#introduction)
- * [Getting Started](#getting-started)
- * [Installation](#installation)
- * [Supported Environment](#supported-environment)
- * [Hardware Requirements](#hardware-requirements)
- * [License](#license)
+ * [简介](#简介)
+ * [开发准备](#开发准备)
+ * [安装](#安装)
+ * [环境要求](#环境要求)
+ * [硬件要求](#硬件要求)
+ * [授权许可](#授权许可)
 
 
-## Introduction
-In this Demo, you will use the Demo Project that has been created for you to call HUAWEI Push Kit APIs. Through the Demo Project, you will:
-1. Apply for a token from HUAWEI Push Kit.
-2. Receive notification/data messages from HUAWEI Push Kit. 
+## 简介
+本示例代码中，你将使用已创建的代码工程来调用华为推送服务（HUAWEI Push Kit）的接口。通过该工程，你将：
+1.	向华为推送服务申请令牌（token）。
+2.	接收来自华为推送服务的通知栏/透传消息。
 
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
-For more information, please refer to: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction
+更多内容，请参考
+https://developer.huawei.com/consumer/cn/doc/development/HMS-Guides/push-introduction
 
-## Getting Started
-1. Register as a developer
-Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104).
-2. Create an app
-Create an app and enable APIs.
-3. Build the demo
-To build this demo, please first import the demo to Android Studio (3.X or later). Then download the agconnect-services.json file of the app from AppGallery Connect, and add the file to the app directory (\app) of the demo.
-     You should also generate a signing certificate fingerprint and add the certificate file to the project, and add configuration to build.gradle.
-     For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html)
+## 快速入门
+1.	注册华为账号，成为华为开发者。
+2.	创建应用，启动接口。
+3.	构建本示例代码，需要先把它导入安卓集成开发环境（Android Studio）（3.X及以上版本）。然后从AppGallery Connect下载应用的agconnect-services.json文件，并添加到示例代码的app目录下（\app）。另外，需要生成签名证书指纹并将证书文件添加到项目中，然后将配置添加到build.gradle。详细信息，请参考[HUAWEI HMS Core](https://developer.huawei.com/consumer/cn/codelab/HMSPreparation/index.html)集成准备。
 
-## Installation
-To use functions provided by examples, please make sure Huawei Mobile Service 4.0 has been installed on your cellphone.
-way 1. You can compile and build the codes in Android Studio. After building the APK, you can install it on the phone and debug it.
-way 2. Generate the APK file from Android Studio. Use the ADB tool to install the APK on the phone and debug it
-adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
 
-## Supported Environment
-Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
+## 简介
+为了使用示例提供的功能，请通过以下方法确保你的手机已安装华为移动服务4.0：
+方法1：在Android Studio中进行代码的编译构建。构建APK完成后，将APK安装到手机上，并调试APK。
+方法2：在Android Studio中生成APK。使用ADB（Android Debug Bridge）工具通过adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk命令将APK安装到手机，并调试APK。
 
-## Hardware Requirements
-A computer (desktop or laptop) that runs the Windows 10/Windows 7 operating system
-A Huawei mobile phone with a USB cable, to be used for service debugging
+## 环境要求
+推荐使用的安卓SDK版本为23及以上，JDK版本为1.8及以上。
 
-## License
-Push kit sample code for android is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+## 硬件要求
+安装有Windows 10/Windows 7操作系统的计算机（台式机或者笔记本）
+带USB数据线的华为手机，用于业务调试。
+
+## 授权许可
+该示例代码经过[Apache 2.0授权许可](http://www.apache.org/licenses/LICENSE-2.0)。
