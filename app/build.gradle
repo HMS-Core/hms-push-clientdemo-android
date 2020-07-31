@@ -18,7 +18,7 @@ android {
         config {
             keyAlias 'xxx'
             keyPassword 'xxx'
-            storeFile file('xxx.xxx')
+            storeFile file('xx.xx')
             storePassword 'xxx'
         }
     }
@@ -40,7 +40,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     // push kit
-    implementation 'com.huawei.hms:push:5.0.0.300'
+    implementation 'com.huawei.hms:push:4.0.3.301'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
