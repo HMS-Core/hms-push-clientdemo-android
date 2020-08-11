@@ -47,5 +47,13 @@ Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
 A computer (desktop or laptop) that runs the Windows 10/Windows 7 operating system
 A Huawei mobile phone with a USB cable, to be used for service debugging
 
+## Question or issues
+If you have questions about how to use HMS samples, try the following options:
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services) is the best place for any programming questions. Be sure to tag your question with 
+**huawei-mobile-services**.
+- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+
+If you run into a bug in our samples, please submit an [issue](https://github.com/HMS-Core/hms-push-clientdemo-android/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/HMS-Core/hms-push-clientdemo-android/pulls) with a fix.
+
 ## License
 Push kit sample code for android is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
