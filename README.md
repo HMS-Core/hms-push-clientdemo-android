@@ -41,7 +41,7 @@ way 2. Generate the APK file from Android Studio. Use the ADB tool to install th
 adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
 
 ## Supported Environment
-Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
+Android SDK Version >= 17 and JDK version >= 1.8 is recommended.
 
 ## Hardware Requirements
 A computer (desktop or laptop) that runs the Windows 10/Windows 7 operating system
