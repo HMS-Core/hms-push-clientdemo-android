@@ -37,7 +37,7 @@ https://developer.huawei.com/consumer/cn/doc/development/HMS-Guides/push-introdu
 方法2：在Android Studio中生成APK。使用ADB（Android Debug Bridge）工具通过adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk命令将APK安装到手机，并调试APK。
 
 ## 环境要求
-推荐使用的安卓SDK版本为23及以上，JDK版本为1.8及以上。
+推荐使用的安卓SDK版本为17及以上，JDK版本为1.8及以上。
 
 ## 硬件要求
 安装有Windows 10/Windows 7操作系统的计算机（台式机或者笔记本）
