@@ -14,21 +14,22 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        config {
-            keyAlias 'xxx'
-            keyPassword 'xxx'
-            storeFile file('xx.xx')
-            storePassword 'xxx'
-        }
-    }
+//    TODO add your signing certificate credentials here, if your have it or remove commented lines
+//    signingConfigs {
+//        config {
+//            keyAlias 'xxx'
+//            keyPassword 'xxx'
+//            storeFile file('xx.xx')
+//            storePassword 'xxx'
+//        }
+//    }
 
     buildTypes {
         debug {
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
         }
         release {
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
