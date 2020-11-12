@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PushKitDemoV4</string>
+    <string name="getToken">Get Token</string>
+    <string name="deleteToken">Delete Token</string>
+    <string name="set_push_unable">TurnOff Push</string>
+    <string name="set_push_enable">TurnOn Push</string>
+    <string name="add_subscribe_topic">Subscribe</string>
+    <string name="get_aaid">Get AAID</string>
+    <string name="delete_aaid">Delete AAID</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="add_topic">subscribe topic name</string>
+    <string name="delete_topic">unsubscribe topic name</string>
+    <string name="delete_subscribe_topic">UnSubscribe</string>
+    <string name="send_msg">Send UpStream Message</string>
+    <string name="generate_intent">Generate Intent Parameters</string>
+    <string name="AutoInitDisabled">Set AutoInit Disabled</string>
+    <string name="AutoInitEnabled">Set AutoInit Enabled</string>
+    <string name="isAutoInitEnabled">is AutoInit Enabled</string>
+    <string name="deep_link">This is the deep link page.</string>
+    <string name="open_page_by_action">Open Page by Action</string>
+    <string name="deep2_link">This is the target activity when you tap notification messages.</string>
+</resources>

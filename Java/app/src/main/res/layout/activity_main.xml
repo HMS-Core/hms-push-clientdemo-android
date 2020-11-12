@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_get_aaid"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:background="@drawable/btn_round_background"
+        android:textAllCaps="false"
+        android:text="@string/get_aaid"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        tools:ignore="ButtonStyle" />
+
+    <Button
+        android:id="@+id/btn_get_token"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/btn_round_background"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:textAllCaps="false"
+        android:text="@string/getToken"
+        android:textColor="@color/white"
+        tools:ignore="ButtonStyle" />
+
+    <Button
+        android:id="@+id/btn_delete_token"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:paddingStart="4dp"
+        android:layout_marginTop="2dp"
+        android:paddingEnd="4dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/btn_round_background"
+        android:textAllCaps="false"
+        android:text="@string/deleteToken"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        tools:ignore="ButtonStyle,RelativeOverlap" />
+
+    <Button
+        android:id="@+id/btn_set_push"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:theme="@style/AppTheme"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:background="@drawable/btn_round_background"
+        android:layout_below="@+id/btn_get_aaid"
+        android:textAllCaps="false"
+        android:text="@string/set_push_unable"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_add_topic"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:layout_below="@+id/btn_get_aaid"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_round_background"
+        android:textAllCaps="false"
+        android:text="@string/add_subscribe_topic"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_delete_topic"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:paddingStart="4dp"
+        android:layout_below="@+id/btn_get_aaid"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="4dp"
+        android:background="@drawable/btn_round_background"
+        android:textAllCaps="false"
+        android:text="@string/delete_subscribe_topic"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_is_autoInit_enabled"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:theme="@style/AppTheme"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:background="@drawable/btn_round_background"
+        android:layout_below="@+id/btn_set_push"
+        android:textAllCaps="false"
+        android:text="@string/isAutoInitEnabled"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_set_autoInit_enabled"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:layout_below="@+id/btn_set_push"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/btn_round_background"
+        android:textAllCaps="false"
+        android:text="@string/AutoInitEnabled"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_generate_intent"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:theme="@style/AppTheme"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:background="@drawable/btn_round_background"
+        android:layout_below="@+id/btn_is_autoInit_enabled"
+        android:textAllCaps="false"
+        android:text="@string/generate_intent"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_action"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:theme="@style/AppTheme"
+        android:layout_gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:background="@drawable/btn_round_background"
+        android:layout_below="@+id/btn_generate_intent"
+        android:textAllCaps="false"
+        android:text="@string/open_page_by_action"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/log_layout"
+        android:layout_below="@+id/btn_action"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </include>
+
+</RelativeLayout>
