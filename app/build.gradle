@@ -18,7 +18,7 @@ android {
         config {
             keyAlias 'xxx'
             keyPassword 'xxx'
-            storeFile file('xxx.xxx')
+            storeFile file('xx.xx')
             storePassword 'xxx'
         }
     }
