@@ -15,6 +15,7 @@ android {
     }
 
     signingConfigs {
+	    // Please replace 'xxx' with your own signature certificate information
         config {
             keyAlias 'xxx'
             keyPassword 'xxx'
