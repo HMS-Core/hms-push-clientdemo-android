@@ -35,10 +35,9 @@ To build this demo, please first import the demo to Android Studio (3.X or later
      For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html)
 
 ## Installation
-To use functions provided by examples, please make sure Huawei Mobile Service 4.0 has been installed on your cellphone.
-way 1. You can compile and build the codes in Android Studio. After building the APK, you can install it on the phone and debug it.
-way 2. Generate the APK file from Android Studio. Use the ADB tool to install the APK on the phone and debug it
-adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
+To use functions provided by examples, please make sure Huawei Mobile Service 4.0 has been installed on your cellphone. There are two ways to install the sample demo: 
+1. You can compile and build the codes in Android Studio. After building the APK, you can install it on the phone and debug it.  
+2. Generate the APK file from Gradle. Use the ADB tool to install the APK on the phone and debug it adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
 
 ## Supported Environment
 Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
