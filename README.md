@@ -44,8 +44,7 @@ adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
 Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
 
 ## Hardware Requirements
-A computer (desktop or laptop) that runs the Windows 10/Windows 7 operating system
-A Huawei mobile phone with a USB cable, to be used for service debugging
+A computer (desktop or laptop) and a Huawei mobile phone with a USB cable, to be used for service debugging.
 
 ## Question or issues
 If you want to evaluate more about HMS Core,
