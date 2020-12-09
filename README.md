@@ -22,17 +22,17 @@ In this Demo, you will use the Demo Project that has been created for you to cal
 
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
-For more information, please refer to: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction
+For more information, please refer to: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction?ha_source=hms1
 
 ## Getting Started
 1. Register as a developer
-Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104).
+Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104?ha_source=hms1).
 2. Create an app
 Create an app and enable APIs.
 3. Build the demo
 To build this demo, please first import the demo to Android Studio (3.X or later). Then download the agconnect-services.json file of the app from AppGallery Connect, and add the file to the app directory (\app) of the demo.
      You should also generate a signing certificate fingerprint and add the certificate file to the project, and add configuration to build.gradle.
-     For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html)
+     For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html?ha_source=hms1)
 
 ## Installation
 To use functions provided by examples, please make sure Huawei Mobile Service 4.0 has been installed on your cellphone. There are two ways to install the sample demo: 
@@ -52,7 +52,7 @@ If you want to evaluate more about HMS Core,
 If you have questions about how to use HMS samples, try the following options:
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services) is the best place for any programming questions. Be sure to tag your question with 
 `huawei-mobile-services`.
-- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001?ha_source=hms1) HMS Core Module is great for general questions, or seeking recommendations and opinions.
 
 If you run into a bug in our samples, please submit an [issue](https://github.com/HMS-Core/hms-push-clientdemo-android/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/HMS-Core/hms-push-clientdemo-android/pulls) with a fix.
 
