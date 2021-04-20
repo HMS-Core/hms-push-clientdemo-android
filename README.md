@@ -24,6 +24,8 @@ In this Demo, you will use the Demo Project that has been created for you to cal
 
 For more information, please refer to: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction?ha_source=hms1
 
+You also can use HMS Toolkit to quickly integrate the kit and run the demo project, as well as debug the app using a remote device for free. For details, please visit https://developer.huawei.com/consumer/en/doc/development/Tools-Guides/getting-started-0000001077381096.
+
 ## Getting Started
 1. Register as a developer
 Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104?ha_source=hms1).
