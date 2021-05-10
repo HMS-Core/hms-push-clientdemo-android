@@ -6,8 +6,8 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.huawei.codelabpush"
-        // minSdkVersion at lest be 17
-        minSdkVersion 17
+        // minSdkVersion at lest be 24
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
