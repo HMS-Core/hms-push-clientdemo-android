@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 try {
                     // read from agconnect-services.json
-                    String appId = AGConnectServicesConfig.fromContext(MainActivity.this).getString("client/app_id");
+                    String appId = "Please enter your App_Id from agconnect-services.json ";
                     String token = HmsInstanceId.getInstance(MainActivity.this).getToken(appId, "HCM");
                     Log.i(TAG, "get token:" + token);
                     if(!TextUtils.isEmpty(token)) {
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 try {
                     // read from agconnect-services.json
-                    String appId = AGConnectServicesConfig.fromContext(MainActivity.this).getString("client/app_id");
+                    String appId = "Please enter your App_Id from agconnect-services.json ";
                     HmsInstanceId.getInstance(MainActivity.this).deleteToken(appId, "HCM");
                     Log.i(TAG, "deleteToken success.");
                     showLog("deleteToken success");
