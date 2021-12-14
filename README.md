@@ -1,62 +1,58 @@
-# Push Kit sample code for Android
+# HMS Core Push Kit Sample Code (Android)
 [![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://developer.huawei.com/consumer/en/hms)
 [![Open Source Love](https://img.shields.io/badge/language-java-green.svg)](https://www.java.com/en/)
 
-English | [中文](https://github.com/HMS-Core/hms-push-clientdemo-android/blob/master/README_ZH.md)
+English | [中文](README_ZH.md)
 
-## Table of Contents
+## Contents
 
- * [Introduction](#introduction)
- * [Getting Started](#getting-started)
- * [Installation](#installation)
- * [Supported Environment](#supported-environment)
- * [Hardware Requirements](#hardware-requirements)
- * [License](#license)
+ * [Introduction](#Introduction)
+ * [Preparations](#Preparations)
+ * [Installation](#Installation)
+ * [Environment Requirements](#Environment-Requirements)
+ * [Hardware Requirements](#Hardware-Requirements)
+ * [License](#License)
 
 
 ## Introduction
-In this Demo, you will use the Demo Project that has been created for you to call HUAWEI Push Kit APIs. Through the Demo Project, you will:
-1. Apply for a token from HUAWEI Push Kit.
-2. Receive notification/data messages from HUAWEI Push Kit. 
+In this sample code, you will use the created demo project to call APIs of Push Kit. Through the demo project, you will:
+1.	Obtain a token of Push Kit.
+	.	Receive notification messages or data messages from Push Kit.
 
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
-For more information, please refer to: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-introduction?ha_source=hms1
+For more information, please refer to
+[Service Introduction](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/service-introduction-0000001050040060?ha_source=hms1).
 
-You also can use HMS Toolkit to quickly integrate the kit and run the demo project, as well as debug the app using a remote device for free. For details, please visit https://developer.huawei.com/consumer/en/doc/development/Tools-Guides/getting-started-0000001077381096.
+You can use HMS Toolkit to quickly run the sample code. HMS Toolkit supports one-stop kit integration, and provides functions such as free app debugging on remote real devices. To learn more about the integration by HMS Toolkit, please refer to the [related section](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/dev-preparation-practice-0000001073320959?ha_source=hms1).
 
-## Getting Started
-1. Register as a developer
-Register a [HUAWEI account](https://developer.huawei.com/consumer/en/doc/start/10104?ha_source=hms1).
-2. Create an app
-Create an app and enable APIs.
-3. Build the demo
-To build this demo, please first import the demo to Android Studio (3.X or later). Then download the agconnect-services.json file of the app from AppGallery Connect, and add the file to the app directory (\app) of the demo.
-     You should also generate a signing certificate fingerprint and add the certificate file to the project, and add configuration to build.gradle.
-     For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html?ha_source=hms1)
+## Preparations
+1.	Register as a Huawei developer.
+	.	Create an app and start APIs.
+	.	Import your demo project to Android Studio 3.*X* or later. Download the **agconnect-services.json** file of the app from AppGallery Connect, and add the file to the app-level directory (**\app**) of your project. Generate a signing certificate fingerprint, add the certificate file to your project, and add the configuration to the *build.gradle* file. For details, please refer to the [integration preparations](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1).
+
 
 ## Installation
-To use functions provided by examples, please make sure Huawei Mobile Service 4.0 has been installed on your cellphone. There are two ways to install the sample demo: 
-1. You can compile and build the codes in Android Studio. After building the APK, you can install it on the phone and debug it.  
-2. Generate the APK file from Gradle. Use the ADB tool to install the APK on the phone and debug it adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk
+To use the functions provided in the sample code, install HMS Core (APK) 4.0 on your phone in one of the following methods:
+Method 1: Compile and build the APK in Android Studio. Then, install the APK on your phone and debug it.
+Method 2: Generate the APK in Android Studio. Use the Android Debug Bridge (ADB) tool to run the **adb install {*YourPath*}\pushkit-android-demo\app\release\app-release.apk** command to install the APK on your phone and debug it.
 
-## Supported Environment
-Android SDK Version >= 23 and JDK version >= 1.8 is recommended.
+## Environment Requirements
+Android SDK 23 or later and JDK 1.8 or later are recommended.
 
 ## Hardware Requirements
-A computer (desktop or laptop) and a Huawei mobile phone with a USB cable, to be used for service debugging.
+A computer (desktop or laptop) running Windows 10 or Windows 7
+A Huawei phone with a USB data cable, which is used for debugging
 
-## Question or issues
-If you want to evaluate more about HMS Core,
-[r/HMSCore on Reddit](https://www.reddit.com/r/HuaweiDevelopers/) is for you to keep up with latest news about HMS Core, and to exchange insights with other developers.
+## Technical Support
+You can visit the [Reddit community](https://www.reddit.com/r/HuaweiDevelopers/) to obtain the latest information about HMS Core and communicate with other developers.
 
-If you have questions about how to use HMS samples, try the following options:
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services) is the best place for any programming questions. Be sure to tag your question with 
-`huawei-mobile-services`.
-- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001?ha_source=hms1) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+If you have any questions about the sample code, try the following:
+- Visit [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services?tab=Votes), submit your questions, and tag them with `huawei-mobile-services`. Huawei experts will answer your questions.
+- Visit the HMS Core section in the [HUAWEI Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001?ha_source=hms1) and communicate with other developers.
 
-If you run into a bug in our samples, please submit an [issue](https://github.com/HMS-Core/hms-push-clientdemo-android/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/HMS-Core/hms-push-clientdemo-android/pulls) with a fix.
+If you encounter any issues when using the sample code, submit your [issues](https://github.com/HMS-Core/hms-push-clientdemo-android/issues) or submit a [pull request](https://github.com/HMS-Core/hms-push-clientdemo-android/pulls).
 
 ## License
-Push kit sample code for android is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+The sample code is licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
