@@ -17,7 +17,8 @@ English | [中文](README_ZH.md)
 
 ## Introduction
 In this sample code, you will use the created demo project to call APIs of Push Kit. Through the demo project, you will:
-1.	Obtain a token of Push Kit.	Receive notification messages or data messages from Push Kit.
+1.	Obtain a token of Push Kit.	
+2.	Receive notification messages or data messages from Push Kit.
 
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
@@ -28,8 +29,8 @@ You can use HMS Toolkit to quickly run the sample code. HMS Toolkit supports one
 
 ## Preparations
 1.	Register as a Huawei developer.
-	.	Create an app and start APIs.
-	.	Import your demo project to Android Studio 3.*X* or later. Download the **agconnect-services.json** file of the app from AppGallery Connect, and add the file to the app-level directory (**\app**) of your project. Generate a signing certificate fingerprint, add the certificate file to your project, and add the configuration to the *build.gradle* file. For details, please refer to the [integration preparations](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1).
+2.	Create an app and start APIs.
+3.	Import your demo project to Android Studio 3.*X* or later. Download the **agconnect-services.json** file of the app from AppGallery Connect, and add the file to the app-level directory (**\app**) of your project. Generate a signing certificate fingerprint, add the certificate file to your project, and add the configuration to the *build.gradle* file. For details, please refer to the [integration preparations](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1).
 
 
 ## Installation
