@@ -17,8 +17,7 @@ English | [中文](README_ZH.md)
 
 ## Introduction
 In this sample code, you will use the created demo project to call APIs of Push Kit. Through the demo project, you will:
-1.	Obtain a token of Push Kit.
-	.	Receive notification messages or data messages from Push Kit.
+1.	Obtain a token of Push Kit.	Receive notification messages or data messages from Push Kit.
 
 <img src="pushDemo.gif" width=250 title="ID Photo DIY" div align=center border=5>
 
