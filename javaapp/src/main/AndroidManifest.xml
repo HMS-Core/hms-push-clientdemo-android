@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.huawei.loveandshare.Deeplink2Activity">
+        <activity android:name="com.huawei.loveandshare.Deeplink2Activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.huawei.codelabpush.intent.action.test" />
 
@@ -22,7 +23,8 @@
             android:name="push_kit_auto_init_enabled"
             android:value="false" />
 
-        <activity android:name="com.huawei.loveandshare.DeeplinkActivity">
+        <activity android:name="com.huawei.loveandshare.DeeplinkActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -34,7 +36,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.huawei.loveandshare.MainActivity">
+        <activity android:name="com.huawei.loveandshare.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
