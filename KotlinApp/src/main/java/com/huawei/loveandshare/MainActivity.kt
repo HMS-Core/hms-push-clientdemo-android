@@ -27,71 +27,82 @@ import android.os.Message
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.huawei.agconnect.config.AGConnectServicesConfig
 import com.huawei.hms.aaid.HmsInstanceId
 import com.huawei.hms.common.ApiException
 import com.huawei.hms.push.HmsMessaging
+import com.huawei.loveandshare.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var tvSetPush: TextView
-    private lateinit var tvSetAAID: TextView
-    private lateinit var tvSetAutoInit: TextView
+class MainActivity : AppCompatActivity() {
+
     private var receiver: MyReceiver? = null
 
     @SuppressLint("HandlerLeak")
     var handler: Handler? = object : Handler() {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
-                GET_AAID -> tvSetAAID.setText(R.string.get_aaid)
-                DELETE_AAID -> tvSetAAID.setText(R.string.delete_aaid)
+                GET_AAID -> binding.btnGetAaid.setText(R.string.get_aaid)
+                DELETE_AAID -> binding.btnGetAaid.setText(R.string.delete_aaid)
                 else -> {
                 }
             }
         }
     }
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tvSetPush = findViewById(R.id.btn_set_push)
-        tvSetAAID = findViewById(R.id.btn_get_aaid)
-        tvSetAutoInit = findViewById(R.id.btn_set_autoInit_enabled)
-        tvSetPush.setOnClickListener(this)
-        tvSetAAID.setOnClickListener(this)
-        tvSetAutoInit.setOnClickListener(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        findViewById<Button>(R.id.btn_add_topic).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_get_token).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_delete_token).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_delete_topic).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_action).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_generate_intent).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_is_autoInit_enabled).setOnClickListener(this)
+        binding.btnSetPush.setOnClickListener {
+            setReceiveNotifyMsg(binding.btnSetPush.text.toString() == getString(R.string.set_push_enable))
+        }
+
+        binding.btnGetAaid.setOnClickListener {
+            setAAID(binding.btnGetAaid.text.toString() == getString(R.string.get_aaid))
+        }
+
+        binding.btnSetAutoInitEnabled.setOnClickListener {
+            setAutoInitEnabled(binding.btnSetAutoInitEnabled.text.toString() == getString(R.string.AutoInitEnabled))
+        }
+
+        binding.btnAddTopic.setOnClickListener {
+            addTopic()
+        }
+
+        binding.btnGetToken.setOnClickListener {
+            getToken()
+        }
+
+        binding.btnDeleteToken.setOnClickListener {
+            deleteToken()
+        }
+
+        binding.btnDeleteTopic.setOnClickListener {
+            deleteTopic()
+        }
+
+        binding.btnAction.setOnClickListener {
+            openActivityByAction()
+        }
+
+        binding.btnGenerateIntent.setOnClickListener {
+            generateIntentUri()
+        }
+
+        binding.btnIsAutoInitEnabled.setOnClickListener {
+            isAutoInitEnabled()
+        }
+
         receiver = MyReceiver()
         val filter = IntentFilter()
         filter.addAction(CODELABS_ACTION)
         registerReceiver(receiver, filter)
-    }
-
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.btn_get_aaid -> setAAID(tvSetAAID.text.toString() == getString(R.string.get_aaid))
-            R.id.btn_get_token -> getToken()
-            R.id.btn_delete_token -> deleteToken()
-            R.id.btn_set_push -> setReceiveNotifyMsg(tvSetPush.text.toString() == getString(R.string.set_push_enable))
-            R.id.btn_add_topic -> addTopic()
-            R.id.btn_delete_topic -> deleteTopic()
-            R.id.btn_action -> openActivityByAction()
-            R.id.btn_generate_intent -> generateIntentUri()
-            R.id.btn_is_autoInit_enabled -> isAutoInitEnabled()
-            R.id.btn_set_autoInit_enabled -> setAutoInitEnabled(tvSetAutoInit.text.toString() == getString(R.string.AutoInitEnabled))
-            else -> {
-            }
-        }
     }
 
     /**
@@ -186,7 +197,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             HmsMessaging.getInstance(this).turnOnPush().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     showLog("turnOnPush Complete")
-                    tvSetPush.setText(R.string.set_push_unable)
+                    binding.btnSetPush.setText(R.string.set_push_unable)
                 } else {
                     showLog("turnOnPush failed: cause=" + task.exception.message)
                 }
@@ -195,7 +206,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             HmsMessaging.getInstance(this).turnOffPush().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     showLog("turnOffPush Complete")
-                    tvSetPush.setText(R.string.set_push_enable)
+                    binding.btnSetPush.setText(R.string.set_push_enable)
                 } else {
                     showLog("turnOffPush  failed: cause =" + task.exception.message)
                 }
@@ -350,12 +361,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             HmsMessaging.getInstance(this).isAutoInitEnabled = true
             Log.i(TAG, "setAutoInitEnabled: true")
             showLog("setAutoInitEnabled: true")
-            tvSetAutoInit.setText(R.string.AutoInitDisabled)
+            binding.btnSetAutoInitEnabled.setText(R.string.AutoInitDisabled)
         } else {
             HmsMessaging.getInstance(this).isAutoInitEnabled = false
             Log.i(TAG, "setAutoInitEnabled: false")
             showLog("setAutoInitEnabled: false")
-            tvSetAutoInit.setText(R.string.AutoInitEnabled)
+            binding.btnSetAutoInitEnabled.setText(R.string.AutoInitEnabled)
         }
     }
 
