@@ -25,39 +25,40 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
+import com.huawei.loveandshare.databinding.DialogAddTopicBinding
 
-class TopicDialog @SuppressLint("InflateParams") constructor(context: Context, isAdd: Boolean) : Dialog(context, R.style.custom_dialog), View.OnClickListener {
-    private val view: View = LayoutInflater.from(context).inflate(R.layout.dialog_add_topic, null)
+class TopicDialog @SuppressLint("InflateParams") constructor(context: Context, isAdd: Boolean) : Dialog(context, R.style.custom_dialog) {
+
     private var onDialogClickListener: OnDialogClickListener? = null
-    private lateinit var edTopic: EditText
-    private fun initView(isAdd: Boolean, context: Context?) {
-        view.findViewById<TextView>(R.id.tv_cancel).setOnClickListener(this)
-        view.findViewById<TextView>(R.id.tv_confirm).setOnClickListener(this)
-        edTopic = view.findViewById(R.id.ed_topic)
+
+    private fun initView(isAdd: Boolean, context: Context) {
+        val binding = DialogAddTopicBinding.inflate(LayoutInflater.from(context))
+
+        val edTopic = binding.edTopic
+
+        binding.tvCancel.setOnClickListener {
+            onDialogClickListener?.onCancelClick()
+        }
+
+        binding.tvConfirm.setOnClickListener {
+            onDialogClickListener?.onConfirmClick(edTopic.text.toString())
+        }
+
         edTopic.setHint(if (isAdd) R.string.add_topic else R.string.delete_topic)
         edTopic.setOnEditorActionListener(OnEditorActionListener { _, i, _ ->
             if (i == EditorInfo.IME_ACTION_UNSPECIFIED) {
                 //
-                val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(window?.decorView?.windowToken, 0)
                 return@OnEditorActionListener true
             }
             false
         })
         setCanceledOnTouchOutside(false)
-        setContentView(view)
+        setContentView(binding.root)
     }
 
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.tv_cancel -> onDialogClickListener?.onCancelClick()
-            R.id.tv_confirm -> onDialogClickListener?.onConfirmClick(edTopic.text.toString())
-            else -> {
-            }
-        }
-    }
-
-    fun setOnDialogClickListener(onDialogClickListener: OnDialogClickListener?) {
+    fun setOnDialogClickListener(onDialogClickListener: OnDialogClickListener) {
         this.onDialogClickListener = onDialogClickListener
     }
 

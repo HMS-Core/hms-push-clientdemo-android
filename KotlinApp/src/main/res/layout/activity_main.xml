@@ -162,6 +162,7 @@
         android:theme="@style/AppTheme" />
 
     <include
+        android:id="@+id/layout_log"
         layout="@layout/log_layout"
         android:layout_below="@+id/btn_action"
         android:layout_width="match_parent"
