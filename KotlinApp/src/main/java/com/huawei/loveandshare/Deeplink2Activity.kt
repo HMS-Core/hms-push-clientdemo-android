@@ -25,27 +25,25 @@ class Deeplink2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deeplink2)
-        getIntentData(intent)
-    }
-
-    private fun getIntentData(intent: Intent?) {
-        if (null != intent) {
-            //
-            val msgId = intent.getStringExtra("_push_msgId")
-            val cmdType = intent.getStringExtra("_push_cmd_type")
-            val notifyId = intent.getIntExtra("_push_notifyId", -1)
-            val bundle = intent.extras
-            bundle?.keySet()?.forEach { key ->
-                val content = bundle.getString(key)
-                Log.i(TAG, "receive data from push, key = $key, content = $content")
-            }
-            Log.i(TAG, "receive data from push, msgId = $msgId, cmd = $cmdType, notifyId = $notifyId")
-        } else {
-            Log.i(TAG, "intent = null")
+        intent?.let {
+            getIntentData(it)
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    private fun getIntentData(intent: Intent) {
+        //
+        val msgId = intent.getStringExtra("_push_msgId")
+        val cmdType = intent.getStringExtra("_push_cmd_type")
+        val notifyId = intent.getIntExtra("_push_notifyId", -1)
+        val bundle = intent.extras
+        bundle?.keySet()?.forEach { key ->
+            val content = bundle.getString(key)
+            Log.i(TAG, "receive data from push, key = $key, content = $content")
+        }
+        Log.i(TAG, "receive data from push, msgId = $msgId, cmd = $cmdType, notifyId = $notifyId")
+    }
+
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         getIntentData(intent)
     }
