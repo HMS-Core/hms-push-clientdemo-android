@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
     <Button
@@ -116,17 +117,17 @@
     <Button
         android:id="@+id/btn_set_autoInit_enabled"
         android:layout_width="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_gravity="center"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btn_set_push"
         android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/btn_round_background"
-        android:textAllCaps="false"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         android:text="@string/AutoInitEnabled"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content" />
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
 
     <Button
@@ -147,24 +148,24 @@
     <Button
         android:id="@+id/btn_action"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_is_autoInit_enabled"
+        android:layout_gravity="end"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="12dp"
-        android:theme="@style/AppTheme"
-        android:layout_gravity="center"
+        android:background="@drawable/btn_round_background"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
-        android:background="@drawable/btn_round_background"
-        android:layout_below="@+id/btn_generate_intent"
-        android:textAllCaps="false"
         android:text="@string/open_page_by_action"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content" />
+        android:theme="@style/AppTheme" />
 
     <include
+        android:id="@+id/layout_log"
         layout="@layout/log_layout"
         android:layout_below="@+id/btn_action"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </include>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

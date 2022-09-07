@@ -16,6 +16,6 @@
 package com.huawei.loveandshare
 
 interface OnDialogClickListener {
-    fun onConfirmClick(msg: String?)
+    fun onConfirmClick(msg: String)
     fun onCancelClick()
 }

@@ -28,43 +28,43 @@ class DeeplinkActivity : Activity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deeplink)
-        getIntentData(intent)
-    }
-
-    private fun getIntentData(intent: Intent?) {
-        if (intent != null) {
-            // Obtain data set in way 1.
-            var iAge1 = 0
-            var name1: String? = null
-            try {
-                val uri = intent.data
-                if (uri == null) {
-                    Log.e(TAG, "getData null")
-                    return
-                }
-                val age1 = uri.getQueryParameter("age")
-                name1 = uri.getQueryParameter("name")
-                if (age1 != null) {
-                    iAge1 = age1.toInt()
-                }
-            } catch (e: NullPointerException) {
-                Log.e(TAG, "NullPointer,$e")
-            } catch (e: NumberFormatException) {
-                Log.e(TAG, "NumberFormatException,$e")
-            } catch (e: UnsupportedOperationException) {
-                Log.e(TAG, "UnsupportedOperationException,$e")
-            } finally {
-                Log.i(TAG, "name $name1,age $iAge1")
-                Toast.makeText(this, "name $name1,age $iAge1", Toast.LENGTH_SHORT).show()
-            }
-
-            // Obtain data set in way 2.
-            // String name2 = intent.getStringExtra("name");
-            // int age2 = intent.getIntExtra("age", -1);
+        intent?.let {
+            getIntentData(it)
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    private fun getIntentData(intent: Intent) {
+        // Obtain data set in way 1.
+        var iAge1 = 0
+        var name1: String? = null
+        try {
+            val uri = intent.data
+            if (uri == null) {
+                Log.e(TAG, "getData null")
+                return
+            }
+            val age1 = uri.getQueryParameter("age")
+            name1 = uri.getQueryParameter("name")
+            if (age1 != null) {
+                iAge1 = age1.toInt()
+            }
+        } catch (e: NullPointerException) {
+            Log.e(TAG, "NullPointer,$e")
+        } catch (e: NumberFormatException) {
+            Log.e(TAG, "NumberFormatException,$e")
+        } catch (e: UnsupportedOperationException) {
+            Log.e(TAG, "UnsupportedOperationException,$e")
+        } finally {
+            Log.i(TAG, "name $name1,age $iAge1")
+            Toast.makeText(this, "name $name1,age $iAge1", Toast.LENGTH_SHORT).show()
+        }
+
+        // Obtain data set in way 2.
+        // String name2 = intent.getStringExtra("name");
+        // int age2 = intent.getIntExtra("age", -1);
+    }
+
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         getIntentData(intent)
     }

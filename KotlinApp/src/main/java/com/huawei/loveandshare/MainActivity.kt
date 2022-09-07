@@ -15,83 +15,79 @@
  */
 package com.huawei.loveandshare
 
-import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ScrollView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.huawei.agconnect.config.AGConnectServicesConfig
+import androidx.lifecycle.lifecycleScope
 import com.huawei.hms.aaid.HmsInstanceId
 import com.huawei.hms.common.ApiException
 import com.huawei.hms.push.HmsMessaging
+import com.huawei.loveandshare.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var tvSetPush: TextView
-    private lateinit var tvSetAAID: TextView
-    private lateinit var tvSetAutoInit: TextView
-    private var receiver: MyReceiver? = null
+class MainActivity : AppCompatActivity() {
 
-    @SuppressLint("HandlerLeak")
-    var handler: Handler? = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                GET_AAID -> tvSetAAID.setText(R.string.get_aaid)
-                DELETE_AAID -> tvSetAAID.setText(R.string.delete_aaid)
-                else -> {
-                }
-            }
-        }
-    }
+    private val receiver: MyReceiver = MyReceiver()
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tvSetPush = findViewById(R.id.btn_set_push)
-        tvSetAAID = findViewById(R.id.btn_get_aaid)
-        tvSetAutoInit = findViewById(R.id.btn_set_autoInit_enabled)
-        tvSetPush.setOnClickListener(this)
-        tvSetAAID.setOnClickListener(this)
-        tvSetAutoInit.setOnClickListener(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        findViewById<Button>(R.id.btn_add_topic).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_get_token).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_delete_token).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_delete_topic).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_action).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_generate_intent).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_is_autoInit_enabled).setOnClickListener(this)
-        receiver = MyReceiver()
+        binding.btnSetPush.setOnClickListener {
+            setReceiveNotifyMsg(binding.btnSetPush.text.toString() == getString(R.string.set_push_enable))
+        }
+
+        binding.btnGetAaid.setOnClickListener {
+            setAAID(binding.btnGetAaid.text.toString() == getString(R.string.get_aaid))
+        }
+
+        binding.btnSetAutoInitEnabled.setOnClickListener {
+            setAutoInitEnabled(binding.btnSetAutoInitEnabled.text.toString() == getString(R.string.AutoInitEnabled))
+        }
+
+        binding.btnAddTopic.setOnClickListener {
+            addTopic()
+        }
+
+        binding.btnGetToken.setOnClickListener {
+            getToken()
+        }
+
+        binding.btnDeleteToken.setOnClickListener {
+            deleteToken()
+        }
+
+        binding.btnDeleteTopic.setOnClickListener {
+            deleteTopic()
+        }
+
+        binding.btnAction.setOnClickListener {
+            openActivityByAction()
+        }
+
+        binding.btnGenerateIntent.setOnClickListener {
+            generateIntentUri()
+        }
+
+        binding.btnIsAutoInitEnabled.setOnClickListener {
+            isAutoInitEnabled()
+        }
+
         val filter = IntentFilter()
         filter.addAction(CODELABS_ACTION)
         registerReceiver(receiver, filter)
-    }
-
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.btn_get_aaid -> setAAID(tvSetAAID.text.toString() == getString(R.string.get_aaid))
-            R.id.btn_get_token -> getToken()
-            R.id.btn_delete_token -> deleteToken()
-            R.id.btn_set_push -> setReceiveNotifyMsg(tvSetPush.text.toString() == getString(R.string.set_push_enable))
-            R.id.btn_add_topic -> addTopic()
-            R.id.btn_delete_topic -> deleteTopic()
-            R.id.btn_action -> openActivityByAction()
-            R.id.btn_generate_intent -> generateIntentUri()
-            R.id.btn_is_autoInit_enabled -> isAutoInitEnabled()
-            R.id.btn_set_autoInit_enabled -> setAutoInitEnabled(tvSetAutoInit.text.toString() == getString(R.string.AutoInitEnabled))
-            else -> {
-            }
-        }
     }
 
     /**
@@ -100,30 +96,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * @param isGet getAAID or deleteAAID
      */
     private fun setAAID(isGet: Boolean) {
-        if (isGet) {
-            val idResult = HmsInstanceId.getInstance(this).aaid
-            idResult.addOnSuccessListener { aaidResult ->
-                val aaId = aaidResult.id
-                Log.i(TAG, "getAAID success:$aaId")
-                showLog("getAAID success:$aaId")
-                handler?.sendEmptyMessage(DELETE_AAID)
-            }.addOnFailureListener { e ->
-                Log.e(TAG, "getAAID failed:$e")
-                showLog("getAAID failed.$e")
-            }
-        } else {
-            object : Thread() {
-                override fun run() {
-                    try {
-                        HmsInstanceId.getInstance(this@MainActivity).deleteAAID()
-                        showLog("delete aaid and its generation timestamp success.")
-                        handler?.sendEmptyMessage(GET_AAID)
-                    } catch (e: Exception) {
-                        Log.e(TAG, "deleteAAID failed. $e")
-                        showLog("deleteAAID failed.$e")
-                    }
+        lifecycleScope.launch {
+            if(isGet) {
+                try {
+                    val idResult = HmsInstanceId.getInstance(this@MainActivity).aaid.await()
+                    val aaId = idResult.id
+                    Log.i(TAG, "getAAID success:$aaId")
+                    printLogInUI("getAAID success:$aaId")
+                    binding.btnGetAaid.setText(R.string.delete_aaid)
+                } catch (e : Exception) {
+                    Log.e(TAG, "getAAID failed:$e")
+                    printLogInUI("getAAID failed.$e")
                 }
-            }.start()
+            } else {
+                try {
+                  withContext(Dispatchers.IO) {
+                      HmsInstanceId.getInstance(this@MainActivity).deleteAAID()
+                  }
+                  printLogInUI("delete aaid and its generation timestamp success.")
+                  binding.btnGetAaid.setText(R.string.get_aaid)
+                } catch (e: Exception) {
+                    Log.e(TAG, "deleteAAID failed. $e")
+                    printLogInUI("deleteAAID failed.$e")
+                }
+            }
         }
     }
 
@@ -133,24 +129,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * This method is a synchronous method, and you cannot call it in the main thread. Otherwise, the main thread may be blocked.
      */
     private fun getToken() {
-        showLog("getToken:begin")
-        object : Thread() {
-            override fun run() {
-                try {
+        printLogInUI("getToken:begin")
+        lifecycleScope.launch {
+            try {
+                val token = withContext(Dispatchers.IO) {
                     // read from agconnect-services.json
-                    val appId = "Please enter your App_Id from agconnect-services.json "
-                    val token = HmsInstanceId.getInstance(this@MainActivity).getToken(appId, "HCM")
-                    Log.i(TAG, "get token:$token")
-                    if (!TextUtils.isEmpty(token)) {
-                        sendRegTokenToServer(token)
+                    val pushToken = HmsInstanceId.getInstance(this@MainActivity).getToken(APP_ID, "HCM")
+                    Log.i(TAG, "get token:$pushToken")
+                    if (!pushToken.isNullOrEmpty()) {
+                        sendRegTokenToServer(pushToken)
                     }
-                    showLog("get token:$token")
-                } catch (e: ApiException) {
-                    Log.e(TAG, "get token failed, $e")
-                    showLog("get token failed, $e")
+                    pushToken
                 }
+                printLogInUI("get token:$token")
+            } catch (e: ApiException) {
+                Log.e(TAG, "get token failed, $e")
+                printLogInUI("get token failed, $e")
             }
-        }.start()
+        }
     }
 
     /**
@@ -159,21 +155,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * This method is a synchronous method. Do not call it in the main thread. Otherwise, the main thread may be blocked.
      */
     private fun deleteToken() {
-        showLog("deleteToken:begin")
-        object : Thread() {
-            override fun run() {
-                try {
-                    // read from agconnect-services.json
-                    val appId = "Please enter your App_Id from agconnect-services.json "
-                    HmsInstanceId.getInstance(this@MainActivity).deleteToken(appId, "HCM")
-                    Log.i(TAG, "deleteToken success.")
-                    showLog("deleteToken success")
-                } catch (e: ApiException) {
-                    Log.e(TAG, "deleteToken failed.$e")
-                    showLog("deleteToken failed.$e")
+        printLogInUI("deleteToken:begin")
+        lifecycleScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    HmsInstanceId.getInstance(this@MainActivity).deleteToken(APP_ID, "HCM")
                 }
+                Log.i(TAG, "deleteToken success.")
+                printLogInUI("deleteToken success")
+            } catch (e: ApiException) {
+                Log.e(TAG, "deleteToken failed.$e")
+                printLogInUI("deleteToken failed.$e")
             }
-        }.start()
+        }
     }
 
     /**
@@ -181,23 +175,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * @param enable enabled or not
      */
     private fun setReceiveNotifyMsg(enable: Boolean) {
-        showLog("Control the display of notification messages:begin")
-        if (enable) {
-            HmsMessaging.getInstance(this).turnOnPush().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    showLog("turnOnPush Complete")
-                    tvSetPush.setText(R.string.set_push_unable)
-                } else {
-                    showLog("turnOnPush failed: cause=" + task.exception.message)
+        printLogInUI("Control the display of notification messages:begin")
+        lifecycleScope.launch {
+            if (enable) {
+                try {
+                    HmsMessaging.getInstance(this@MainActivity).turnOnPush().await()
+                    printLogInUI("turnOnPush Complete")
+                    binding.btnSetPush.setText(R.string.set_push_unable)
+                } catch (e : Exception) {
+                    printLogInUI("turnOnPush failed: cause= ${e.message}")
                 }
-            }
-        } else {
-            HmsMessaging.getInstance(this).turnOffPush().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    showLog("turnOffPush Complete")
-                    tvSetPush.setText(R.string.set_push_enable)
-                } else {
-                    showLog("turnOffPush  failed: cause =" + task.exception.message)
+            } else {
+                try {
+                    HmsMessaging.getInstance(this@MainActivity).turnOffPush().await()
+                    printLogInUI("turnOffPush Complete")
+                    binding.btnSetPush.setText(R.string.set_push_enable)
+                } catch (e : Exception) {
+                    printLogInUI("turnOffPush  failed: cause = ${e.message}")
                 }
             }
         }
@@ -209,22 +203,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun addTopic() {
         val topicDialog = TopicDialog(this, true)
         topicDialog.setOnDialogClickListener(object : OnDialogClickListener {
-            override fun onConfirmClick(msg: String?) {
+            override fun onConfirmClick(msg: String) {
                 topicDialog.dismiss()
-                try {
-                    HmsMessaging.getInstance(this@MainActivity)
-                            .subscribe(msg)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    Log.i(TAG, "subscribe Complete")
-                                    showLog("subscribe Complete")
-                                } else {
-                                    showLog("subscribe failed: ret=" + task.exception.message)
-                                }
-                            }
-                } catch (e: Exception) {
-                    showLog("subscribe failed: exception=" + e.message)
-                }
+                subscribeTopic(msg)
             }
 
             override fun onCancelClick() {
@@ -232,6 +213,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
         topicDialog.show()
+    }
+
+    private fun subscribeTopic(topic : String) {
+        lifecycleScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    HmsMessaging.getInstance(this@MainActivity).subscribe(topic).await()
+                }
+                Log.i(TAG, "subscribe Complete")
+                printLogInUI("subscribe Complete")
+            } catch (e : Exception) {
+                printLogInUI("subscribe failed: exception= ${e.message}")
+            }
+        }
     }
 
     /**
@@ -240,21 +235,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun deleteTopic() {
         val topicDialog = TopicDialog(this, false)
         topicDialog.setOnDialogClickListener(object : OnDialogClickListener {
-            override fun onConfirmClick(msg: String?) {
+            override fun onConfirmClick(msg: String) {
                 topicDialog.dismiss()
-                try {
-                    HmsMessaging.getInstance(this@MainActivity)
-                            .unsubscribe(msg)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    showLog("unsubscribe Complete")
-                                } else {
-                                    showLog("unsubscribe failed: ret=" + task.exception.message)
-                                }
-                            }
-                } catch (e: Exception) {
-                    showLog("unsubscribe failed: exception=" + e.message)
-                }
+                unsubscribeTopic(msg)
             }
 
             override fun onCancelClick() {
@@ -264,15 +247,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         topicDialog.show()
     }
 
-    /**
-     * MyReceiver
-     */
-    inner class MyReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            val bundle = intent?.extras
-            if (bundle?.getString("msg") != null) {
-                val content = bundle.getString("msg")
-                showLog(content)
+    private fun unsubscribeTopic(topic : String) {
+        lifecycleScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    HmsMessaging.getInstance(this@MainActivity).unsubscribe(topic).await()
+                }
+                printLogInUI("unsubscribe Complete")
+            } catch (e : Exception) {
+                printLogInUI("unsubscribe failed: ret= ${e.message}")
+            }
+        }
+    }
+
+    private inner class MyReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            intent.extras?.getString("msg")?.let {
+                printLogInUI(it)
             }
         }
     }
@@ -282,20 +273,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         unregisterReceiver(receiver)
     }
 
-    fun showLog(log: String?) {
-        runOnUiThread {
-            val tvView = findViewById<View?>(R.id.tv_log)
-            val svView = findViewById<View?>(R.id.sv_log)
-            if (tvView is TextView) {
-                tvView.text = log
-            }
-            if (svView is ScrollView) {
-                svView.fullScroll(View.FOCUS_DOWN)
-            }
+    private fun printLogInUI(log: String) {
+        binding.layoutLog.run {
+            tvLog.append("$log\n")
+            svLog.fullScroll(View.FOCUS_DOWN)
         }
     }
 
-    private fun sendRegTokenToServer(token: String?) {
+    private fun sendRegTokenToServer(token: String) {
         Log.i(TAG, "sending token to server. token:$token")
     }
 
@@ -322,7 +307,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val intentUri = intent.toUri(Intent.URI_INTENT_SCHEME)
         // The value of intentUri will be assigned to the intent parameter in the message to be sent.
         Log.d("intentUri", intentUri)
-        showLog(intentUri)
+        printLogInUI(intentUri)
 
         // You can start the deep link activity with the following code.
         //intent.setClass(this, DeeplinkActivity.class);
@@ -341,28 +326,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun isAutoInitEnabled() {
-        Log.i(TAG, "isAutoInitEnabled:" + HmsMessaging.getInstance(this).isAutoInitEnabled)
-        showLog("isAutoInitEnabled:" + HmsMessaging.getInstance(this).isAutoInitEnabled)
+        Log.i(TAG, "isAutoInitEnabled: ${HmsMessaging.getInstance(this).isAutoInitEnabled}")
+        printLogInUI("isAutoInitEnabled: ${HmsMessaging.getInstance(this).isAutoInitEnabled}")
     }
 
     private fun setAutoInitEnabled(enable: Boolean) {
         if (enable) {
             HmsMessaging.getInstance(this).isAutoInitEnabled = true
             Log.i(TAG, "setAutoInitEnabled: true")
-            showLog("setAutoInitEnabled: true")
-            tvSetAutoInit.setText(R.string.AutoInitDisabled)
+            printLogInUI("setAutoInitEnabled: true")
+            binding.btnSetAutoInitEnabled.setText(R.string.AutoInitDisabled)
         } else {
             HmsMessaging.getInstance(this).isAutoInitEnabled = false
             Log.i(TAG, "setAutoInitEnabled: false")
-            showLog("setAutoInitEnabled: false")
-            tvSetAutoInit.setText(R.string.AutoInitEnabled)
+            printLogInUI("setAutoInitEnabled: false")
+            binding.btnSetAutoInitEnabled.setText(R.string.AutoInitEnabled)
         }
     }
 
     companion object {
+        private const val APP_ID = "" //TODO add your appID here
+
         private const val TAG: String = "PushDemoLog"
-        private const val GET_AAID = 1
-        private const val DELETE_AAID = 2
         private const val CODELABS_ACTION: String = "com.huawei.codelabpush.action"
     }
 }
