@@ -53,7 +53,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     
     // HMS Push kit
-    implementation 'com.huawei.hms:push:6.3.0.300'
+    implementation 'com.huawei.hms:push:6.3.0.304'
 
 }
 repositories {
