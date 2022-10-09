@@ -42,7 +42,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // push kit
-    implementation 'com.huawei.hms:push:6.3.0.300'
+    implementation 'com.huawei.hms:push:6.3.0.304'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.4.0'
