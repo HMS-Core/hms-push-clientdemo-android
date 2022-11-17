@@ -30,7 +30,7 @@ You can use HMS Toolkit to quickly run the sample code. HMS Toolkit supports one
 ## Preparations
 1.	Register as a Huawei developer.
 2.	Create an app and start APIs.
-3.	Import your demo project to Android Studio 3.*X* or later. Download the **agconnect-services.json** file of the app from AppGallery Connect, and add the file to the app-level directory (**\app**) of your project. Generate a signing certificate fingerprint, add the certificate file to your project, and add the configuration to the *build.gradle* file. For details, please refer to the [integration preparations](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1).
+3.	Import your demo project to Android Studio (Bumblebee | 2021.1.1) or later. Download the **agconnect-services.json** file of the app from AppGallery Connect, and add the file to the app-level directory (**\app**) of your project. Generate a signing certificate fingerprint, add the certificate file to your project, and add the configuration to the *build.gradle* file. For details, please refer to the [integration preparations](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1).
 
 
 ## Installation
