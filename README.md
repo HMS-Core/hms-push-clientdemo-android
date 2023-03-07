@@ -39,7 +39,7 @@ Method 1: Compile and build the APK in Android Studio. Then, install the APK on 
 Method 2: Generate the APK in Android Studio. Use the Android Debug Bridge (ADB) tool to run the **adb install {*YourPath*}\pushkit-android-demo\app\release\app-release.apk** command to install the APK on your phone and debug it.
 
 ## Environment Requirements
-Android SDK 23 or later and JDK 1.8 or later are recommended.
+Android targetSdkVersion 29 or later and JDK 1.8.211 or later are recommended.
 
 ## Hardware Requirements
 A computer (desktop or laptop) running Windows 10 or Windows 7
