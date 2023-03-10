@@ -27,7 +27,7 @@
 该示例也可以通过HMS Toolkit快速启动运行，且支持各Kit一站式集成，并提供远程真机免费调测等功能。了解更多信息，请参见[HMS Toolkit](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/dev-preparation-practice-0000001073320959?ha_source=hms1)
 
 ## 开发准备
-1.	注册华为账号，成为华为开发者。
+1.	注册华为帐号，成为华为开发者。
 2.	创建应用，启动接口。
 3.	构建本示例代码，需要先把它导入安卓集成开发环境（Android Studio的版本为2021.2.1及以上）。然后从AppGallery Connect下载应用的agconnect-services.json文件，并添加到对应示例代码的app目录下（java语言为/javaapp/，kotlin语言为/KotlinApp/）。另外，需要生成签名证书指纹并将证书文件添加到项目中，然后将配置添加到build.gradle。详细信息，请参见[HUAWEI HMS Core](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/android-config-agc-0000001050170137?ha_source=hms1)集成准备。
 
