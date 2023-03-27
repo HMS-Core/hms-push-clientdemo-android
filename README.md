@@ -36,7 +36,7 @@ You can use HMS Toolkit to quickly run the sample code. HMS Toolkit supports one
 ## Installation
 To use the functions provided in the sample code, install HMS Core (APK) 4.0 on your phone in one of the following methods:
 Method 1: Compile and build the APK in Android Studio. Then, install the APK on your phone and debug it.
-Method 2: Generate the APK in Android Studio. Use the Android Debug Bridge (ADB) tool to run the **adb install {*YourPath*}\pushkit-android-demo\app\release\app-release.apk** command to install the APK on your phone and debug it.
+Method 2: Generate the APK in Android Studio. Use the Android Debug Bridge (ADB) tool to run the **adb install {*YourPath/YourApp.apk*}** command to install the APK on your phone and debug it.
 
 ## Environment Requirements
 Android targetSdkVersion 29 or later and JDK 1.8.211 or later are recommended.
