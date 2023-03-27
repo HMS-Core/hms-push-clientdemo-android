@@ -35,7 +35,7 @@
 ## 安装
 为了使用示例提供的功能，请通过以下方法确保你的手机已安装华为移动服务4.0：
 方法1：在Android Studio中进行代码的编译构建。构建APK完成后，将APK安装到手机上，并调试APK。
-方法2：在Android Studio中生成APK。使用ADB（Android Debug Bridge）工具通过adb install {YourPath}\pushkit-android-demo\app\release\app-release.apk命令将APK安装到手机，并调试APK。
+方法2：在Android Studio中生成APK。使用ADB（Android Debug Bridge）工具通过adb install {YourPath/YourApp.apk} 命令将APK安装到手机，并调试APK。
 
 ## 环境要求
 推荐使用的安卓targetSdk版本为29及以上，JDK版本为1.8.211及以上。
