@@ -38,7 +38,7 @@
 方法2：在Android Studio中生成APK。使用ADB（Android Debug Bridge）工具通过adb install {YourPath/YourApp.apk} 命令将APK安装到手机，并调试APK。
 
 ## 环境要求
-推荐使用的安卓targetSdk版本为29及以上，JDK版本为1.8.211及以上。
+推荐使用的安卓targetSdk版本为33及以上，JDK版本为1.8.211及以上。
 
 ## 硬件要求
 安装有Windows 10/Windows 7操作系统的计算机（台式机或者笔记本）
