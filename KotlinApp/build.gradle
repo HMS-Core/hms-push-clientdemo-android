@@ -6,7 +6,6 @@ android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "com.huawei.codelabpush"
-        // minSdkVersion at lest be 24
         minSdkVersion 24
         targetSdkVersion 31
         versionCode 1
